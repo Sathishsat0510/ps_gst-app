@@ -1,0 +1,42 @@
+<script>
+  var Component = require('./models/component');
+  var app=angular.module('myApp', []);
+  app.controller('myCtrl', function($scope) {
+    $scope.names = "Volvo";
+  })
+  .factory('jsonFactory', function ($q, $http) {
+      return {
+        getOtherStuff: function () {
+          var deferred = $q.defer(),
+            httpPromise = $http.get('data/otherStuff.json');
+
+          httpPromise.then(function (response) {
+            deferred.resolve(response);
+          }, function (error) {
+            console.error(error);
+          });
+          return deferred.promise;
+        }
+      };
+    });
+
+
+  </script>
+
+<div class="container">
+  <div ng-app="myApp" ng-controller="myCtrl">
+      <p>EDIT PRODUCTS</p>
+      <span ng-repeat="x in names">{{x}}</span>
+      <span ng-repeat="x in names">{{x}}</span>
+      <span ng-repeat="x in names">{{x}}</span>
+      <span ng-repeat="x in names">{{x}}</span>
+      <span ng-repeat="x in names">{{x}}</span><br>
+
+  </div>
+
+
+
+
+  </div>
+
+

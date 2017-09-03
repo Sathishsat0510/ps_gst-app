@@ -27,9 +27,11 @@
     "express": "^4.15.4",
     "hapi": "^16.5.2",
     "inert": "^4.2.1",
+    "joi": "^10.6.0",
     "mongoose": "^4.11.9",
     "mysql": "^2.14.1",
     "rxjs": "^5.4.2",
+    "socket.io": "^2.0.3",
     "zone.js": "^0.8.14"
   },
   "devDependencies": {
