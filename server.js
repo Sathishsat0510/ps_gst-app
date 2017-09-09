@@ -6,21 +6,27 @@ var mysql = require('mysql');
 var Vision = require('vision');
 var Handlebars = require('handlebars');
 var fs=require('fs');
+var addcorsHeaders = require('hapi-cors-headers');
 
 
 // creating connection
 server.connection({port:3000});
 var con = mysql.createConnection({
-  host: "localhost",
+  host: "127.0.0.1",
   user: "root",
   password: "",
   database:'store'
 });
-
+server.ext('onPreResponse', addcorsHeaders)
 // connect to database
 con.connect(function(err) {
-  if (err) throw err;
-  console.log('Connected');
+  if (err) {
+    console.log(err);
+  }
+  else{
+    console.log('Connected');
+  }
+
 });
 
 
@@ -32,11 +38,13 @@ server.register(require('inert'), function (err) {
 
   server.route({
     method: 'GET',
-    path: '/',
-    handler: function (request, reply) {
+    path: '/api',
+    handler: function (request, reply, next) {
       con.query("SELECT * FROM products", function (err, result, fields) {
+        var string=JSON.stringify(result);
+        var json =  JSON.parse(string);
         if (err) throw err;
-        reply.file('placement/src/index.html');
+        reply(json).type('application/json');
       });
     }
   });
@@ -44,12 +52,13 @@ server.register(require('inert'), function (err) {
 //Display products
   server.route({
     method: 'GET',
-    path: '/display',
+    path: '/api/display',
     handler: function (request, reply) {
       con.query("SELECT * FROM products", function (err, result, fields) {
+        var string=JSON.stringify(result);
+        var json =  JSON.parse(string);
         if (err) throw err;
-        reply(results);
-
+        reply(json);
       });
     }
   });
@@ -58,13 +67,13 @@ server.register(require('inert'), function (err) {
 
   server.route({
     method: 'POST',
-    path: '/api/insert',
+    path: '/insert',
     handler: function (request, reply) {
       var cope = req.body.params;
       var sql = "INSERT INTO products SET ?";
       con.query(sql, cope, function (err, result) {
         if (err) throw err;
-        reply(results);
+        reply(result);
       });
     }
   });
@@ -100,7 +109,7 @@ server.register(require('inert'), function (err) {
       var sql = 'UPDATE products SET productname=?,productdescription=?,productdescription:=?,rate=?,gst=?  WHERE productid =?';
       var query1 = con.query(sql, [a1, b2, c3, d4, e5, a1], function (err, result) {
         if (err) throw err;
-        reply(results);
+        reply(result);
       });
     }
   });
@@ -112,8 +121,10 @@ server.register(require('inert'), function (err) {
     path: '/cart',
     handler: function (request, reply) {
       con.query("SELECT * FROM cart", function (err, result, fields) {
+        var string=JSON.stringify(result);
+        var json =  JSON.parse(string);
         if (err) throw err;
-        reply(results);
+        reply(json);
       });
     }
   });
@@ -130,7 +141,7 @@ server.register(require('inert'), function (err) {
       var sql = "INSERT INTO cart SET ?";
       con.query(sql, post, function (err, result) {
         if (err) throw err;
-        reply(results);
+        reply(result);
       });
     }
   });
@@ -151,7 +162,6 @@ server.register(require('inert'), function (err) {
       });
     }
   });
-
 
   server.start(function () {
 

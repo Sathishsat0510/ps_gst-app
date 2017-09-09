@@ -10,7 +10,6 @@
   height:15%;
   width:100%;
   background:#57a051;
-  position:fixed;
   top:0px;
 }
 .top h1
@@ -21,7 +20,6 @@
   color:white;
   font-family: vedarana;
   font-size:50px;
-  position: fixed;
 
 }
 .but

@@ -10,25 +10,5 @@
       <input type="submit" value="SUBMIT"  ng-click="submit()">
     </form>
   </div>
-  <script>
-    var app = angular.module('myApp', []);
-    app.controller('myCtrl', function($scope) {
-      $scope.submit= function(){
-        var data = $.param({
-          product: JSON.stringify({
-            productid: $scope.productid,
-            Producname : $scope.Producname,
-            Productdescription : $scope.Productdescription,
-            rate:$scope.rate,
-            gst:$scope.gst
-          })
-        });
-
-        $http.post("http://localhost:3000/update/{$scope.productid}", data).success(function(data, status) {
-          console.log('Data posted successfully');
-        })
-      }
-    });
-  </script>
 
 </div>

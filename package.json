@@ -26,6 +26,7 @@
     "cors": "^2.8.4",
     "express": "^4.15.4",
     "hapi": "^16.5.2",
+    "hapi-cors-headers": "^1.0.0",
     "inert": "^4.2.1",
     "joi": "^10.6.0",
     "mongoose": "^4.11.9",
