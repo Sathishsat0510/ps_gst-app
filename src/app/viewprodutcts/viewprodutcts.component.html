@@ -1,21 +1,27 @@
+
+
+
 <div class="container">
-  <div ng-app="myApp" ng-controller="myCtrl">
-      <p>Your PRODUCTS</p>
-    <ul>
-      <li *ngFor="let span of getData">
-        <span>Product ID:{{span.productid}}</span>
-        <span>Product Name:{{span.productname}}</span>
-        <span>Product Descrition:{{span.productdescription}}</span>
-        <span>Product Rate:{{span.rate}}</span>
-        <span>Product Gst:{{span.gst}}</span>
-      </li>
-      <br>
-    </ul>
+    <div ng-app="myApp" ng-controller="myCtrl">
+          <p>CART PRODUCTS</p>
+        <table class="table table-condensed"><tr >
+          <td class="pa">Cart Id</td>
+          <td class="pa">Product Id</td>
+          <td class="pa">Product Name</td>
+          <td class="pa">Product Rate</td>
+          <td class="pa">Product Gst</td>
+          <td class="pa"> DELETE</td>
+        </tr>
+            <tr *ngFor="let task of displaydata" class="opt1">
+                <td class="pa">{{task.cartid}}</td>
+                <td class="pa">{{task.productid}}</td>
+                <td class="pa">{{task.productname}}</td>
+                <td class="pa">{{task.productrate}}</td>
+                <td class="pa">{{task.productgst}}</td>
+                <td class="pa"><input type="button" (click)= "delete(task.cartid)" value="DELETE" class="btn btn-primary"> </td>
+            </tr>
+            <br>
+          </table>
 
-
-  </div>
-
-
-  </div>
-
-
+      </div>
+    </div>

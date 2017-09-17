@@ -1,15 +1,43 @@
-<div class="container" >
-  <div ng-app="myApp"ng-controller="myCtrl">
-    <form>
-  <p>ADD PRODUCTS</p>
-  <input type="text"placeholder="Product ID" ng-model="productid"><br>
-  <input type="text"placeholder="Product Name" ng-model="Producname"> <br>
-  <input type="text"placeholder="Product Description" ng-model="Productdescription"><br>
-  <input type="text"placeholder="Product Rate" ng-model="rate"><br>
-  <input type="text"placeholder="Product GST" ng-model="gst"><br>
-  <input type="button" ng-click="onRegisteredSubmit()"value="SUBMIT">
-    </form>
-  </div>
+<span class="container" style="width: 40%;float: left">
+  <p>ADD PRODUCT</p>
+  <form (ngSubmit)="addtoproduct()">
+    <div class="form-group">
+      <input type="text" id="prname" placeholder="Name" class="form-control" [(ngModel)]="productname" name="prname" ><br>
+      <input type="text" id="prdes" placeholder="Description" class="form-control" [(ngModel)]="productdescription" name="prdes" ><br>
+      <input type="number" id="prrate" placeholder="Rate"  class="form-control" [(ngModel)]="productrate" name="prrate" ><br>
+      <input type="number" placeholder="GST" id="prgst"  class="form-control" [(ngModel)]="productgst" name="prgst" ><br>
+      <input type="submit" value="SUBMIT" class="btn btn-success" style="margin-left: 70%;">
+    </div>
+  </form>
+  </span>
+<span class="container" style="float: right;width: 60%">
+  <div ng-app="myApp" ng-controller="myCtrl">
+    <p>Your PRODUCTS</p>
+    <table class="table table-condensed"><tr >
+      <td class="pa">Product Id</td>
+      <td class="pa">Product Name</td>
+      <td class="pa">Product Descrition</td>
+      <td class="pa">Product Rate</td>
+      <td class="pa">Product Gst</td>
+      <td class="pa">ADD TO CART</td>
+      <td class="pa">DELETE</td>
+    </tr>
+      <tr *ngFor="let task of displaydata" class="opt1">
+        <td class="pa">{{task.productid}}</td>
+        <td class="pa">{{task.productname}}</td>
+        <td class="pa">{{task.productdescription}}</td>
+        <td class="pa">{{task.productrate}}</td>
+        <td class="pa">{{task.productgst}}</td>
+        <td class="pa"><input type="button" (click)= "addtocart(task.productid)" value="ADD TO CART" class="btn btn-primary"> </td>
+        <td class="pa"><input type="button" (click)= "delete(task.productid)" value="DELETE" class="btn btn-primary"> </td>
+      </tr>
+      <br>
+    </table>
 
   </div>
+</span>
+
+
+
+
 

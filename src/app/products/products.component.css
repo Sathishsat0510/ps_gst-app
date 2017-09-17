@@ -1,41 +1,41 @@
 .container{
   background-color: gray;
-  height: 450px;
+  min-height: 500px;
+  max-height: 500px;
   text-align: left;
   margin: 0px;
   display: inline-block;
   width:100%;
+  overflow: auto;
 }
-.container input[type="text"]
+
+.container input[type="text"],input[type="number"]
 {
-  width:450px;
-  height:40px;
+  width:400px;
+  color:black;
   font-size:18px;
-  margin-bottom:10px;
-  border:0;
-  border-radius:5px;
-  padding-left:20px;
-  -webkit-border-radius:8px;
-  margin-left: 100px;
-}
-.container input[type="submit"]
-{
-  width:200px;
-  height:45px;
-  color:white;
-  padding:10px 20px;
-  color:#fff;
-  font-size:18px;
-  border:0;
   border-radius:4px;
-  -webkit-border-radius:8px;
-  background-color:blue;
-  margin-left: 450px;
-  margin-top: 20px;
+  margin-left: 80px;
+  margin-top: 5px;
+}
+.pa
+{
+  max-width:200px;
+  font-family: vedarana;
+  font-size:18px;
+  padding-bottom:10px;
+  padding-top:10px;
+  margin-left:0px;
+  text-align:center;
+  color: white;
 }
 
 .container p{
   color: white;
   font-size: 30px;
   font-family: vedarana;
+  margin-top: 20px;
+}
+.opt1{
+  overflow: auto;
 }

@@ -7,15 +7,14 @@
 {
   margin:0px;
   margin-top:0px;
-  height:15%;
+  height:4%;
   width:100%;
   background:#57a051;
-  top:0px;
 }
 .top h1
 {
 
-  margin-top:20px;
+  margin-top:10px;
   margin-left: 80px;
   color:white;
   font-family: vedarana;
@@ -24,8 +23,7 @@
 }
 .but
 {
-  margin-top: 70px;
-  height: 40px;
+  max-height: 50px;
 }
 a:link, a:visited {
   background-color: #f44336;
