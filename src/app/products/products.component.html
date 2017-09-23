@@ -1,11 +1,11 @@
 <span class="container" style="width: 40%;float: left">
   <p>ADD PRODUCT</p>
-  <form (ngSubmit)="addtoproduct()">
+  <form ngNativeValidate (ngSubmit)="addtoproduct()">
     <div class="form-group">
-      <input type="text" id="prname" placeholder="Name" class="form-control" [(ngModel)]="productname" name="prname" ><br>
-      <input type="text" id="prdes" placeholder="Description" class="form-control" [(ngModel)]="productdescription" name="prdes" ><br>
-      <input type="number" id="prrate" placeholder="Rate"  class="form-control" [(ngModel)]="productrate" name="prrate" ><br>
-      <input type="number" placeholder="GST" id="prgst"  class="form-control" [(ngModel)]="productgst" name="prgst" ><br>
+      <input type="text" id="prname" placeholder="Name" class="form-control" [(ngModel)]="productname" name="prname" required ><br>
+      <input type="text" id="prdes" placeholder="Description" class="form-control" [(ngModel)]="productdescription" name="prdes"required ><br>
+      <input type="number" id="prrate" placeholder="Rate"  class="form-control" [(ngModel)]="productrate" name="prrate"  required><br>
+      <input type="number" placeholder="GST" id="prgst"  class="form-control" [(ngModel)]="productgst" name="prgst"required><br>
       <input type="submit" value="SUBMIT" class="btn btn-success" style="margin-left: 70%;">
     </div>
   </form>
